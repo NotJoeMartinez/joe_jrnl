@@ -41,6 +41,7 @@ void make_journal(){
 	// remove newline chars from path
 	journal_dir[strcspn(journal_dir, "\n")] = 0;
 	journal_desc[strcspn(journal_desc,"\n")] = 0;
+	journal_name[strcspn(journal_name,"\n")] = 0;
 
 	strcat(journal_dir,"/");
 	strcat(journal_dir,journal_name);
@@ -49,7 +50,7 @@ void make_journal(){
 
 	printf("Full Journal Path %s \n", journal_dir);
 
-	add_jrnl(journal_dir, journal_desc);
+	add_jrnl(journal_name, journal_desc, journal_dir);
 	printf("Added journal to db\n");
 
 	// Make the directory if it does not exist
@@ -93,3 +94,5 @@ void write_to_journal(){
 
 	fclose(fp);
 }
+
+	
