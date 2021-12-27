@@ -3,6 +3,8 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+#include "db_opps.h"
+
 void timestamp_string (char * myString)
 {
     char     timestamp[16];
@@ -32,9 +34,13 @@ void make_journal(){
 	fgets(journal_name, 180, stdin);
 	printf("Journal Name: %s \n", journal_name);
 
+	char journal_desc[100];
+	printf("Enter a description for your journal: ");
+	fgets(journal_desc, 180, stdin);
 
 	// remove newline chars from path
 	journal_dir[strcspn(journal_dir, "\n")] = 0;
+	journal_desc[strcspn(journal_desc,"\n")] = 0;
 
 	strcat(journal_dir,"/");
 	strcat(journal_dir,journal_name);
@@ -43,6 +49,8 @@ void make_journal(){
 
 	printf("Full Journal Path %s \n", journal_dir);
 
+	add_jrnl(journal_dir, journal_desc);
+	printf("Added journal to db\n");
 
 	// Make the directory if it does not exist
 	struct stat st = {0};

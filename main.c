@@ -7,8 +7,8 @@
 #include "writing_opps.h"
 
 
-char write_to_file(char* text);
-void timestamp_string (char * myString);
+// char write_to_file(char* text);
+// void timestamp_string (char * myString);
 
 int main(int argc, char* argv[]){
 	int c;
