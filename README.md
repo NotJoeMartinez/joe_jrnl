@@ -12,6 +12,10 @@ A commandline journal application written in C.
 - Sqlite3 interface 
   - https://zetcode.com/db/sqlitec/
 
+- Text Encryption
+  - http://www.trytoprogram.com/c-examples/c-program-to-encrypt-and-decrypt-string/
+  - [Text input and output](https://www.programiz.com/c-programming/c-file-input-output) 
+
 - CLI options 
   - `-h`
 	- Help: Describes what the program does
