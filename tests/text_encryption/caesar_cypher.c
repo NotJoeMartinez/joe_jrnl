@@ -2,7 +2,7 @@
 #include <getopt.h>
 #include <stdio.h>
 #include <string.h>
-char caesar_math(char str[100], int key);
+int caesar_math(char str[100], int key);
 void file_mode(char fpath[100]);
 void encrypt_file(char decrypted[100], char encrypted[100], int key);
 
@@ -27,6 +27,7 @@ void file_mode(char fpath[100]){
    encrypt_file(fpath, words, key);
 }
 
+
 void encrypt_file(char decrypted[100],char encrypted[100], int key){
     FILE *fptr1, *fptr2;
     char c;
@@ -50,8 +51,9 @@ void encrypt_file(char decrypted[100],char encrypted[100], int key){
     // Read contents from file
     c = fgetc(fptr1);
     while (c != EOF){
-       caesar_math(c, key);
-       fputc(c, fptr2);
+       int e_char;
+       e_char = caesar_math(c, key);
+       fputc(e_char, fptr2);
        c = fgetc(fptr1);
     }
   
@@ -61,27 +63,13 @@ void encrypt_file(char decrypted[100],char encrypted[100], int key){
     fclose(fptr2);
 }
 
-char caesar_math(char str[100], int key){
-   //using switch case statements
-   int i, x;
-
-   switch(x){
-
-   case 1:
-      for(i = 0; (i < 100 && str[i] != '\0'); i++)
-        str[i] = str[i] + key; //the key for encryption is 3 that is added to ASCII value
-
-      printf("\nEncrypted string: %s\n", str);
-      break;
-
-   case 2:
-      for(i = 0; (i < 100 && str[i] != '\0'); i++)
-        str[i] = str[i] - key; //the key for encryption is 3 that is subtracted to ASCII value
-
-      printf("\nDecrypted string: %s\n", str);
-      break;
-
-   default:
-      printf("\nError\n");
-   }
+int caesar_math(char c[10], int key){
+   int final_val;
+   if ((c + key) > 127){
+        final_val = c + key;
+        while(final_val > 127){
+            final_val = final_val % 127;
+        }
+    }
+   return final_val;
 }
