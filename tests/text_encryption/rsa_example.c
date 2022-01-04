@@ -12,13 +12,13 @@ long int cd(long int);
 void encrypt();
 void decrypt();
 
-int main()
-{
+int main(){
+
   printf("\nENTER FIRST PRIME NUMBER\n");
   scanf("%d", &x);
   flag = prime(x);
-  if(flag == 0)
-  {
+
+  if(flag == 0){
     printf("\nINVALID INPUT\n");
     exit(0);
   }
