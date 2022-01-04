@@ -2,74 +2,103 @@
 #include <getopt.h>
 #include <stdio.h>
 #include <string.h>
-int caesar_math(char str[100], int key);
-void file_mode(char fpath[100]);
-void encrypt_file(char decrypted[100], char encrypted[100], int key);
+#include <getopt.h>
 
-int main(){
-   char fpath[100]= "message.txt";
-   file_mode(fpath);
+int caesar_math(char str[100], int key, int mode);
+void crypto_opps(char input[100], int mode);
+
+int main(int argc, char* argv[]){
+   int opt;
+   while((opt = getopt(argc, argv, ":e:d:")) != -1){
+      switch(opt){
+         case 'e':
+            crypto_opps(argv[2], 1);
+            break;
+         case 'd':
+            crypto_opps(argv[2],0);
+            break;
+      }
+   }
+
 } 
 
-void file_mode(char fpath[100]){
+
+void crypto_opps(char input[100], int mode){
+
    int key;
-   char encrypted[50];
-   printf("Enter the shift: ");
+   char prepstring[100];
+
+   printf("Enter the key: ");
    scanf("%d", &key);
-   printf("key: %d\n", key);
-   printf("%s\n", fpath);
 
-   fpath[strcspn(fpath, "\n")] = 0;
-   strcpy(encrypted,fpath);
-   char words[100] = "encrypted_";
-   strcat(words,encrypted);
+   if(mode==1){
+      strcpy(prepstring, "encrypted_");
+   }
 
-   encrypt_file(fpath, words, key);
-}
+   if(mode == 0){
+      strcpy(prepstring, "decrypted_");
+   }
+   // clearjunk
+   input[strcspn(input, "\n")] = 0;
 
 
-void encrypt_file(char decrypted[100],char encrypted[100], int key){
+   strcat(prepstring,input);
+
+
     FILE *fptr1, *fptr2;
     char c;
   
     // Open one file for reading
-    fptr1 = fopen(decrypted, "r");
+    fptr1 = fopen(input, "r");
     if (fptr1 == NULL)
     {
-        printf("Cannot open file %s \n", decrypted);
+        printf("Cannot open file %s \n", input);
       //   exit(0);
     }
   
     // Open another file for writing
-    fptr2 = fopen(encrypted, "w");
+    fptr2 = fopen(prepstring, "w");
     if (fptr2 == NULL)
     {
-        printf("Cannot open file %s \n", encrypted);
+        printf("Cannot open file %s \n", prepstring);
       //   exit(0);
     }
   
-    // Read contents from file
+    // Open and encrypt file charcater by character 
     c = fgetc(fptr1);
     while (c != EOF){
        int e_char;
-       e_char = caesar_math(c, key);
+       e_char = caesar_math(c, key, mode); 
        fputc(e_char, fptr2);
        c = fgetc(fptr1);
     }
   
-    printf("\nContents copied to %s", encrypted);
+    printf("\nContents copied to %s", prepstring);
   
     fclose(fptr1);
     fclose(fptr2);
 }
 
-int caesar_math(char c[10], int key){
+int caesar_math(char c[10], int key, int mode){
+
    int final_val;
-   if ((c + key) > 127){
-        final_val = c + key;
-        while(final_val > 127){
+   if (mode == 1){
+      if ((c + key) > 127){
+         final_val = c + key;
+         while(final_val > 127){
+               final_val = final_val % 127;
+         }
+      }
+   }
+
+   if (mode == 0){
+      if ((c - key) > 127){
+         final_val = c - key;
+         while(final_val > 127){
             final_val = final_val % 127;
-        }
-    }
+         }
+      }
+
+   }
    return final_val;
 }
