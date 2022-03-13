@@ -6,8 +6,15 @@
 
 #include "writing_opps.h"
 
+void show_help();
 
 int main(int argc, char* argv[]){
+
+  if (argc < 2){
+    printf("No argument supplied\n");
+    show_help();
+  }
+
 	int c;
 	while (1) {
     int option_index = 0;
@@ -45,11 +52,7 @@ int main(int argc, char* argv[]){
         break;
 
       case 'h':
-        printf("Help Page:\n");
-        printf("--new-journal\n");
-        printf("--new-entry\n");
-        printf("--list-journals\n");
-        printf("--read-entry\n");
+        show_help();
         break;
 
       case '?':
@@ -70,3 +73,11 @@ int main(int argc, char* argv[]){
 
 }
 
+
+void show_help(){
+        printf("Help Page:\n");
+        printf("--new-journal\n");
+        printf("--new-entry\n");
+        printf("--list-journals\n");
+        printf("--read-entry\n");
+}

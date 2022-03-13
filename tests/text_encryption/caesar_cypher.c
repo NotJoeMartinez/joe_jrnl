@@ -100,5 +100,7 @@ int caesar_math(char c[10], int key, int mode){
       }
 
    }
+   
+   printf("final val: %d\n", final_val);
    return final_val;
 }
