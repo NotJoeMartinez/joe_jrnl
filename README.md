@@ -1,5 +1,5 @@
 # joe_jrnl 
-Clone of the [jrnl](jrnl.sh) project written in C.
+Clone of the [jrnl](https://jrnl.sh) project written in C.
 
 ### Problems to solve
 - YAML Parsing for configuration settings
@@ -19,5 +19,5 @@ Clone of the [jrnl](jrnl.sh) project written in C.
   - `-rj`
     - Read Journal: Lists entries or filenames of journal
   - `-re` 
-    - Reads Entry: Reads Entries based on Filename 
+    - Reads Entry: Reads Entires based on Filename 
 
