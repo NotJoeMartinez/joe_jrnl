@@ -3,7 +3,6 @@
 #include <string.h>
 #include <time.h>
 #include <getopt.h>
-
 #include "writing_opps.h"
 
 void show_help();
