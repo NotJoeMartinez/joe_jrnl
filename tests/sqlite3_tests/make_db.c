@@ -17,10 +17,10 @@ int main(){
 int test_db(){
 
     char paths[10][100][100]= {
-        {"~/code/c_shit/joe_jrnl/tests/cli_stuff", "Commanline Testing"},
-        {"~/code/c_shit/joe_jrnl/tests/external_editing", "External Editor Testing"},
-        {"~/code/c_shit/joe_jrnl/tests/importing_stuff", "Import Statment testing"},
-        {"~/code/c_shit/joe_jrnl/tests/sqlite3_tests", "Database Testing"},
+        {"tests/cli_stuff", "Commanline Testing"},
+        {"tests/external_editing", "External Editor Testing"},
+        {"tests/importing_stuff", "Import Statment testing"},
+        {"tests/sqlite3_tests", "Database Testing"},
         };
     
     for (int i=0; i<=3; i++){

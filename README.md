@@ -1,22 +1,13 @@
 # joe_jrnl 
-A commandline journal application written in C. 
+Clone of the [jrnl](jrnl.sh) project written in C.
 
 ### Problems to solve
-- Dynamically create new file names
-	- generate a date time string 
-	- concatinate this string to a filepath with a txt varable
+- YAML Parsing for configuration settings
+- Contents of each journal is stored in a text file
+- Text Encryption 
+- Full Text Search 
 
-- Allowing for creation of entries in external editor  
-  - https://stackoverflow.com/questions/61662295/open-file-in-vi-vim-using-c-language
-
-- Sqlite3 interface 
-  - https://zetcode.com/db/sqlitec/
-
-- Text Encryption
-  - http://www.trytoprogram.com/c-examples/c-program-to-encrypt-and-decrypt-string/
-  - [Text input and output](https://www.programiz.com/c-programming/c-file-input-output) 
-
-- CLI options 
+### Usage/CLI options 
   - `-h`
 	- Help: Describes what the program does
 	- This is a journaling application that allows you to password protect your ideas
@@ -26,7 +17,7 @@ A commandline journal application written in C.
   - `-nj` 
     - New Journal: Prompts the user for a password and file path for journal
   - `-rj`
-    - Read Journal: Lists entires or filenames of journal
+    - Read Journal: Lists entries or filenames of journal
   - `-re` 
-    - Reads Entry: Reads Entires based on Filename 
+    - Reads Entry: Reads Entries based on Filename 
 
